@@ -1,0 +1,174 @@
+<!-- 
+Please note that custom code added to the
+project is beyond of the scope of Readymag
+support. Bend matter carefully.
+
+You might want to learn more about the
+limitations of the Code Injection feature here:
+http://help.readymag.com/hc/en-us/articles/360020844171-Code-injection
+
+ \      oo
+  \____|\mm
+  //_//\ \_\
+ /K-9/  \/_/
+/___/_____\
+-----------
+-->
+
+<style>
+
+p { 
+  /*padding-left: 150px; */
+  padding:10px;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+  
+.speech-bubble {
+	position: relative;
+  /*float:right;*/
+  margin-left:50px;
+  margin-right:50px;
+	background: gray;
+  text-align: left;
+  color: white;
+  border-radius: 15px 30px 30px 5px;
+}
+
+.speech-bubble-2{
+	position: relative;
+	background: #00bbff;
+  margin-left:50px;
+  margin-right:50px;
+	border-radius: .4em;
+  color:black;
+  border-radius: 30px 15px 5px 30px;
+  /*display:inline;*/
+}
+
+.main-card{
+  font-family: "helvetica neue";
+  /*font-family:"Times New Roman";*/
+  max-width: 300px;
+  width: 300px;
+  border-style: solid;
+  border-color: black;
+  padding-bottom: 20px;
+}
+
+.img1 {
+  float:left;
+  width:40px;
+}
+
+.img2{
+  float:right;
+  width:40px;
+}
+
+#joke-button{
+  width:150px;
+  height: 30px;
+  font-size:16;
+}
+
+</style>
+
+<div class="main-card">
+
+  <div class="chat-area" id="message-box">
+  </div>
+  
+  <div class="input-div center">
+    <button class="input-send" id="joke-button" onclick="send()">
+      New Joke
+    </button>
+  </div>
+</div>
+
+<script>
+var running = false
+var current = -1
+// var jokes = [
+// 	['Placeholder A', 'Placeholder B'],
+//   	['Placeholder C', 'Placeholder D'],
+//   	['Placeholder E'],
+//   	['Placeholder F']
+// ]
+
+var jokes = [
+  ['Waitress: May I take your order?',"Griffles: No, it's mine."],
+  ['Q: Where does Griffles go when his tail falls off?','A: To Junction 8, because there are many retail shops there!'],
+  ["Quick Griffles facts: If you stacked 100 Griffles on top of each other, they wouldn't like it."],
+  ['Quick Griffles Facts: When Griffles was a kid, he used to put a ruler under his pillow to measure how long he slept.  '],
+  ['"Hmm..." thought Griffles as he tried really hard to remember what year the War of 1812 was in history class. '],
+  ['Quick Griffles facts: Griffles hates puns about the body because they are corny, but he hates puns about eyes even more because they are cornea'],
+  ["Q: What's the cheapest part of Griffles' house?","A: The roof tiles, because they're on the house!"],
+  ["Fun Fact: Charlie is the name of Moor-Tarbet's phoenix mascot. Through extensive studies Rafflesians have discovered that if you shout 'Derbbie' around her, she would not respond. This may be because Derbbie is not Charlie's name."],
+  ["Fun Fact: Derbbie is the name of Buckle-Buckley's dragon mascot. She is good friends with Leo, Bayley-Waddle's lion mascot because among the five mascots, they are the only ones who enjoy pineapple pizza."],
+  ["Fun Fact: Luca is the name of Hadley-Hullet's horse mascot. You may sometimes see him galloping majestically across the school campus and watch in awe. In reality, Luca is running away from Wally, having secretly eaten Wally's stash of Hello Panda snacks. "],
+  ["Fun Fact: Wally is the name of Richardson-Morrison's wolf mascot."]
+]
+
+send = () => {
+    if (running == true)
+        return
+  	// console.log("Hello")
+    running = true
+  	if (current === -1){
+      addMsg('Griffles, tell me a joke!')
+      let totjokes = jokes.length
+      // console.log(totjokes)
+      let index = Math.floor(Math.random() * totjokes)
+      // console.log(index)
+      let obj = jokes[index]
+      // console.log(obj)
+      if (obj.length === 2){
+       	  window.setTimeout(addResponseMsg,1000,obj[0]);
+          current = index
+      }else{
+          window.setTimeout(addResponseMsg,1000,obj[0]);
+          current = -1
+      }
+    }else{
+      	addMsg('Why?')
+    	let msg = jokes[current][1];
+      	window.setTimeout(addResponseMsg,1000,msg);
+      	current = -1
+    }
+  	setTimeout(() => {
+      if (current == -1){
+          document.getElementById('joke-button').innerHTML = 'New Joke';
+      }else{
+          document.getElementById('joke-button').innerHTML = 'Answer';
+      }
+    },1000);
+}
+
+function addMsg(msg) {
+    var div = document.createElement("div");
+    let str = '<img class="img2" src="https://icon-library.com/images/no-profile-pic-icon/no-profile-pic-icon-23.jpg" width=40px />'
+    div.innerHTML = "<p class='speech-bubble-2'>" + msg + "</p>" + str 
+    // div.className = "chatuser"
+    document.getElementById("message-box").appendChild(div)
+}
+
+function addResponseMsg(msg) {
+    var div = document.createElement("div");
+    let str = '<img class="img1" src="https://pokemoncards4cheap.com/wp-content/uploads/2020/06/223-2233352_pokemon-vulpix-hd-png-download.png" width=40px />'
+    div.innerHTML = str + "<p class='speech-bubble'>" + msg + "</p>"
+    // div.className = "speech-bubble"
+    document.getElementById("message-box").appendChild(div)
+
+    running = false
+}
+
+window.onload = () => {
+	addResponseMsg('Hello! I am the friendly Griffles Chatbot! Press the button for a griffles joke!')
+}
+
+</script>
