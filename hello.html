@@ -18,7 +18,6 @@ http://help.readymag.com/hc/en-us/articles/360020844171-Code-injection
 <style>
 
 p { 
-  /*padding-left: 150px; */
   padding:10px;
 }
 
@@ -50,8 +49,9 @@ p {
   /*display:inline;*/
 }
 
-.main-card{
+#main-card{
   font-family: "helvetica neue";
+  display:none;
   /*font-family:"Times New Roman";*/
   max-width: 300px;
   width: 300px;
@@ -76,29 +76,50 @@ p {
   font-size:16;
 }
 
+#on-chatbot{
+  width:60px;
+  height:60px;
+  padding: 3px;
+}
+
+#close-chatbot{
+  border-radius:50%;
+  height:20px;
+  width:20px;
+  border-color:black;
+  border-style: solid;
+  border-width: 0.5px;
+  font-size:12px;
+  padding: 0px;
+  background-color: white;
+}
+
 </style>
 
-<div class="main-card">
+<div id="main-card">
+
+  <button id="close-chatbot" onclick="maininvisible()">
+    X
+  </button>
 
   <div class="chat-area" id="message-box">
   </div>
   
   <div class="input-div center">
-    <button class="input-send" id="joke-button" onclick="send()">
+    <button id="joke-button" onclick="send()">
       New Joke
     </button>
   </div>
+
 </div>
+
+<button id="on-chatbot" onclick="mainvisible()">
+  
+</button>
 
 <script>
 var running = false
 var current = -1
-// var jokes = [
-// 	['Placeholder A', 'Placeholder B'],
-//   	['Placeholder C', 'Placeholder D'],
-//   	['Placeholder E'],
-//   	['Placeholder F']
-// ]
 
 var jokes = [
   ['Waitress: May I take your order?',"Griffles: No, it's mine."],
@@ -121,16 +142,12 @@ const grifflesb64 = 'iVBORw0KGgoAAAANSUhEUgAAADMAAAAzCAYAAAA6oTAqAAABYWlDQ1BrQ0d
 send = () => {
     if (running == true)
         return
-  	// console.log("Hello")
     running = true
   	if (current === -1){
       addMsg('Griffles, tell me a joke!')
       let totjokes = jokes.length
-      // console.log(totjokes)
       let index = Math.floor(Math.random() * totjokes)
-      // console.log(index)
       let obj = jokes[index]
-      // console.log(obj)
       if (obj.length === 2){
        	  window.setTimeout(addResponseMsg,500,obj[0]);
           current = index
@@ -156,25 +173,34 @@ send = () => {
 function addMsg(msg) {
     var div = document.createElement("div");
     let str= "<img class='img2' src='data:image/png;base64," + profilepicb64 + "' width=40px />"
-    // let str = '<img class="img2" src="https://icon-library.com/images/no-profile-pic-icon/no-profile-pic-icon-23.jpg" width=40px />'
     div.innerHTML = str + "<p class='speech-bubble-2'>" + msg + "</p>"
-    // div.className = "chatuser"
     document.getElementById("message-box").appendChild(div)
 }
 
 function addResponseMsg(msg) {
     var div = document.createElement("div");
     let str= "<img class='img1' src='data:image/png;base64," + grifflesb64 + "' width=40px />"
-    // let str = '<img class="img1" src="https://pokemoncards4cheap.com/wp-content/uploads/2020/06/223-2233352_pokemon-vulpix-hd-png-download.png" width=40px />'
     div.innerHTML = str + "<p class='speech-bubble'>" + msg + "</p>"
-    // div.className = "speech-bubble"
     document.getElementById("message-box").appendChild(div)
-
     running = false
+}
+
+mainvisible = () => {
+  document.getElementById('main-card').style.display='block'
+  document.getElementById('on-chatbot').style.display='none'
+}
+
+maininvisible = () => {
+  document.getElementById('main-card').style.display='none'
+  document.getElementById('on-chatbot').style.display='block' 
 }
 
 window.onload = () => {
 	addResponseMsg('Hello! I am the friendly Griffles Chatbot! Press the button for a griffles joke!')
+  var div = document.createElement('div')
+  let img = "<img class='img1' src='data:image/png;base64," + grifflesb64 + "' width=40px />"
+  div.innerHTML = img  
+  document.getElementById('on-chatbot').appendChild(div)
 }
 
 </script>
