@@ -128,16 +128,16 @@ send = () => {
       let obj = jokes[index]
       // console.log(obj)
       if (obj.length === 2){
-       	  window.setTimeout(addResponseMsg,1000,obj[0]);
+       	  window.setTimeout(addResponseMsg,500,obj[0]);
           current = index
       }else{
-          window.setTimeout(addResponseMsg,1000,obj[0]);
+          window.setTimeout(addResponseMsg,500,obj[0]);
           current = -1
       }
     }else{
       	addMsg('Why?')
     	let msg = jokes[current][1];
-      	window.setTimeout(addResponseMsg,1000,msg);
+      	window.setTimeout(addResponseMsg,500,msg);
       	current = -1
     }
   	setTimeout(() => {
@@ -146,13 +146,13 @@ send = () => {
       }else{
           document.getElementById('joke-button').innerHTML = 'Answer';
       }
-    },1000);
+    },500);
 }
 
 function addMsg(msg) {
     var div = document.createElement("div");
     let str = '<img class="img2" src="https://icon-library.com/images/no-profile-pic-icon/no-profile-pic-icon-23.jpg" width=40px />'
-    div.innerHTML = "<p class='speech-bubble-2'>" + msg + "</p>" + str 
+    div.innerHTML = str + "<p class='speech-bubble-2'>" + msg + "</p>"
     // div.className = "chatuser"
     document.getElementById("message-box").appendChild(div)
 }
