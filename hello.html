@@ -60,13 +60,19 @@ p {
 }
 
 .img1 {
+  position:absolute;
   float:left;
   width:40px;
+  left:5px;
+  bottom:0px;
 }
 
 .img2{
   float:right;
-  width:40px;
+  width:50px;
+  bottom:0px;
+  right: 0px;
+  position:absolute;
 }
 
 #joke-button{
@@ -93,6 +99,11 @@ p {
   font-size:8px;
   padding: 0px;
   background-color: #FF605C;
+}
+
+.divholder{
+  /* border: 5px solid purple; Enable this line if we want purple box to debug */
+  position: relative;
 }
 
 </style>
@@ -177,6 +188,7 @@ function addMsg(msg) {
     var div = document.createElement("div");
     let str= "<img class='img2' src='data:image/png;base64," + profilepicb64 + "' width=50px />"
     div.innerHTML = str + "<p class='speech-bubble-2'>" + msg + "</p>"
+    div.className='divholder'
     document.getElementById("message-box").appendChild(div)
 }
 
@@ -184,6 +196,7 @@ function addResponseMsg(msg) {
     var div = document.createElement("div");
     let str= "<img class='img1' src='data:image/png;base64," + grifflesb64 + "' width=40px />"
     div.innerHTML = str + "<p class='speech-bubble'>" + msg + "</p>"
+    div.className='divholder'
     document.getElementById("message-box").appendChild(div)
     running = false
 }
@@ -201,7 +214,7 @@ maininvisible = () => {
 window.onload = () => {
 	addResponseMsg('Hello! I am the friendly Griffles Chatbot! Press the button for a griffles joke!')
   var div = document.createElement('div')
-  let img = "<img class='img1' src='data:image/png;base64," + grifflesb64 + "' width=40px />"
+  let img = "<img src='data:image/png;base64," + grifflesb64 + "' width=40px />"
   div.innerHTML = img  
   document.getElementById('on-chatbot').appendChild(div)
 }
