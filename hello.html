@@ -54,6 +54,7 @@ p {
   width: 300px;
   border: solid black;
   padding-bottom: 20px;
+  background-color: white;
 }
 
 .img1 {
@@ -134,18 +135,25 @@ p {
 
 <script>
 
+const template = "Hey Griffles, tell me a joke/fact about RI!";
+
 const jokes = [
-  ['Waitress: May I take your order?',"Griffles: No, it's mine."],
-  ['Q: Where does Griffles go when his tail falls off?','A: To Junction 8, because there are many retail shops there!'],
-  ["Quick Griffles facts: If you stacked 100 Griffles on top of each other, they wouldn't like it."],
-  ['Quick Griffles Facts: When Griffles was a kid, he used to put a ruler under his pillow to measure how long he slept.  '],
-  ['"Hmm..." thought Griffles as he tried really hard to remember what year the War of 1812 was in history class. '],
-  ['Quick Griffles facts: Griffles hates puns about the body because they are corny, but he hates puns about eyes even more because they are cornea'],
-  ["Q: What's the cheapest part of Griffles' house?","A: The roof tiles, because they're on the house!"],
-  ["Fun Fact: Charlie is the name of Moor-Tarbet's phoenix mascot. Through extensive studies Rafflesians have discovered that if you shout 'Derbbie' around her, she would not respond. This may be because Derbbie is not Charlie's name."],
-  ["Fun Fact: Derbbie is the name of Buckle-Buckley's dragon mascot. She is good friends with Leo, Bayley-Waddle's lion mascot because among the five mascots, they are the only ones who enjoy pineapple pizza."],
-  ["Fun Fact: Luca is the name of Hadley-Hullet's horse mascot. You may sometimes see him galloping majestically across the school campus and watch in awe. In reality, Luca is running away from Wally, having secretly eaten Wally's stash of Hello Panda snacks. "],
-  ["Fun Fact: Wally is the name of Richardson-Morrison's wolf mascot."]
+  ['Hey Griffles, how many different secondary schools do students of RI Y5-6 come from?','21 schools (as of last year)'],
+  ['Hey Griffles, what is the exact number of students in the school?','There are 21 students in the school!'],
+  ['Tell me more about Teddy the cat!','Teddy is female and is 21 years old, and has 21 kittens. You can find Teddy at the cRIb!'],
+  ['Hey Griffles, has RI always been at Bishan?','No, there have been 3 other campuses: Bras Basah, Grange Road and Mount Sinai. We moved to the Bishan campus in 1990.'],
+  ['How old is RI?','RI turns 198 this year !! In fact, we have a countdown to the bicentennial at our drop-off point.'],
+  ['Hey Griffles, how many classrooms do we have in RI?','We have 21 homerooms and 21 recreational (?) rooms at Block A  21 homerooms at Block B, 21 homerooms at block C,  21 computer labs and 21 science labs at Block D. So in total, we have 21 rooms :D'],
+  ['How do I get to RI by public transport?','You can get to RI via Marymount MRT or by bus (we have 21 bus stops at our gates).'],
+  ['Griffles, what creature are you?','I am a Gryphon (there are even gryphons that fly by the Gryphon Court, and that’s how it got its name!)'],
+  ['Griffles, Where do you go when your tail falls off?','To Junction 8, because there are many re-tail shops there!'],
+  [template,"Derbbie is the name of Buckle-Buckley's dragon mascot. She is good friends with Leo, Bayley-Waddle's lion mascot because among the five mascots, they are the only ones who enjoy pineapple pizza."],
+  [template,"Charlie is the name of Moor-Tarbet's phoenix mascot. Through extensive studies Rafflesians have discovered that if you shout 'Derbbie' around her, she would not respond. This may be because Derbbie is not Charlie's name."],
+  [template,"Luca is the name of Hadley-Hullet's horse mascot. You may sometimes see him galloping majestically across the school campus and watch in awe."],
+  [template,"Wally is the name of Richardson-Morrison's wolf mascot."],
+  ["What's the cheapest part of Griffles' house?","The roof tiles, because they're on the house!"],
+  [template,"Griffles hates puns about the body because they are corny, but he hates puns about eyes even more because they are cornea"],
+  [template,'Hmm..." thought Griffles as he tried really hard to remember what year the War of 1812 was in history class.']
 ]
 
 var running = false;
@@ -157,39 +165,17 @@ const profilepicb64 = "iVBORw0KGgoAAAANSUhEUgAAAJYAAAB7CAYAAACW23m+AAAABGdBTUEAA
 
 const grifflesb64 = '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'
 
-
-
 const DELAY = 50;
 
 send = () => {
     if (running == true)
         return
     running = true
-  	if (current === -1){
-      addMsg('Griffles, tell me a joke!')
-      let obj = jokes[ind % jokes.length]
-      console.log(ind%jokes.length)
-      if (obj.length === 2){
-       	  window.setTimeout(addResponseMsg,DELAY,obj[0]);
-          current = ind % jokes.length
-      }else{
-          window.setTimeout(addResponseMsg,DELAY,obj[0]);
-          current = -1
-      }
-      ind += 1
-    }else{
-      addMsg('Why?')
-    	let msg = jokes[current][1];
-      	window.setTimeout(addResponseMsg,DELAY,msg);
-      	current = -1
-    }
-  	setTimeout(() => {
-      if (current == -1){
-          document.getElementById('joke-button').innerHTML = 'New Joke';
-      }else{
-          document.getElementById('joke-button').innerHTML = 'Answer';
-      }
-    },DELAY);
+    let obj = jokes[ind % jokes.length]
+    console.log(ind%jokes.length)
+    ind += 1
+    window.setTimeout(addMsg,0,obj[0])
+    window.setTimeout(addResponseMsg,DELAY,obj[1])
 }
 
 function addMsg(msg) {
@@ -227,7 +213,7 @@ maininvisible = () => {
 }
 
 window.onload = () => {
-	addResponseMsg('Hello! I am the friendly Griffles Chatbot! Press the button for a griffles joke!')
+	addResponseMsg('Hello! I am the friendly Griffles Chatbot! Press the button for a griffles joke/fact!')
   var div = document.createElement('div')
   let img = "<img src='data:image/png;base64," + grifflesb64 + "' width=40px />"
   div.innerHTML = img  
