@@ -55,11 +55,11 @@ p {
   padding-bottom: 20px;
   background-color: white;
   overflow: hidden;
-  border:1px black solid;
+  border-bottom:3px black solid;
   top:0px;
   position:fixed;
   max-height:1000px;
-  height:400px;
+  height:500px;
 }
 
 .img1 {
@@ -79,19 +79,22 @@ p {
 }
 
 #joke-button{
-  width:150px;
+  width:200px;
   height: 30px;
   font-size:16;
   border-radius: 5px;
+  border-color:#0072b1;
   position:absolute;
   bottom:5px;
+  color: white;
+  background-color: #0072b1;
 }
 
 #on-chatbot{
   width:60px;
   height:60px;
   padding-left:7px;
-  border-radius:5px;
+  border-radius:50%;
   position:fixed;
 }
 
@@ -102,14 +105,9 @@ p {
   border: 1px solid white;
   font-size:8px;
   padding: 0px;
-  background-color: white;
-  /*background-color: #FF605C;*/
+  background-color: #FF605C;
   position:relative;
   float:left;
-}
-
-#close-chatbot:hover{
-  background-color: gray;
 }
 
 .chat-area{
@@ -120,7 +118,6 @@ p {
 }
 
 .divholder{
-  /* border: 5px solid purple; Enable this line if we want purple box to debug */
   position: relative;
 }
 
@@ -137,7 +134,7 @@ p {
   
   <div class="input-div center">
     <button id="joke-button" onclick="send()">
-      New Joke
+      New Joke/Fun Fact
     </button>
   </div>
 
