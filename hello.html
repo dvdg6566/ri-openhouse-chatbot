@@ -149,7 +149,7 @@ p {
 const template = "Hey Griffles, tell me a joke/fact about RI!";
 
 const jokes = [
-  ['Hey Griffles, how many students are there in the school?','There are more than 2400 students in the school!'],
+  // ['Hey Griffles, how many students are there in the school?','There are more than 2400 students in the school!'],
   // ['Tell me more about Teddy the cat!','Teddy is female and is 21 years old, and has 21 kittens. You can find Teddy at the cRIb!'],
   ['Hey Griffles, has RI always been at Bishan?','No, there have been 3 other campuses: Bras Basah, Grange Road and Mount Sinai. We moved to the Bishan campus in 1990.'],
   ['How old is RI?','RI turns 198 this year !! In fact, we have a countdown to the bicentennial at Block B'],
@@ -164,6 +164,9 @@ const jokes = [
   ["What's the cheapest part of Griffles' house?","The roof tiles, because they're on the house!"],
   [template,"Griffles hates puns about the body because they are corny, but he hates puns about eyes even more because they are cornea"],
   [template,'Hmm..." thought Griffles as he tried really hard to remember what year the War of 1812 was in history class.']
+  ["Waitress: May I take your order", "No, it's mine!"],
+  [template, "Quick Griffles Facts: When Griffles was a kid, he used to put a ruler under his pillow to measure how long he slept."],
+  [template,"Quick Griffles facts: If you stacked 100 Griffles on top of each other, they wouldn't like it."]
 ]
 
 var running = false;
@@ -227,7 +230,7 @@ maininvisible = () => {
 }
 
 window.onload = () => {
-	addResponseMsg('Hello! I am the friendly Griffles Chatbot! Press the button for a griffles joke/fact!')
+	addResponseMsg('Hello! I am Griffles! Press the button for a griffles joke/fact!')
   var div = document.createElement('div')
   let img = "<img src='data:image/png;base64," + grifflesb64 + "' width=40px />"
   div.innerHTML = img 
