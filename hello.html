@@ -28,7 +28,7 @@ p {
 }
   
 .speech-bubble {
-	position: relative;
+  position: relative;
   margin-left:50px;
   margin-right:70px;
   background:#0f7c5f;
@@ -38,11 +38,11 @@ p {
 }
 
 .speech-bubble-2{
-	position: relative;
+  position: relative;
   background: #0072b1;
   margin-left:70px;
   margin-right:50px;
-	border-radius: .4em;
+  border-radius: .4em;
   color:white;
   border-radius: 15px 15px 5px 15px;
 }
@@ -79,13 +79,15 @@ p {
 }
 
 #joke-button{
-  width:200px;
+  font-family:"helvetica neue";
+  width:60%;
   height: 30px;
   font-size:16;
   border-radius: 5px;
   border-color:#0072b1;
   position:absolute;
   bottom:5px;
+  right:20%;
   color: white;
   background-color: #0072b1;
 }
@@ -100,14 +102,15 @@ p {
 
 #close-chatbot{
   border-radius:50%;
-  height:15px;
-  width:15px;
+  height:50px;
+  width:50px;
   border: 1px solid white;
-  font-size:8px;
+  font-size:50px;
   padding: 0px;
-  background-color: #FF605C;
+  background-color: white;
   position:relative;
   float:left;
+  margin:auto;
 }
 
 .chat-area{
@@ -115,6 +118,11 @@ p {
   position: absolute;
   bottom: 30px;
   max-height:95%;
+}
+
+.jokeblock{
+    border: 50px solid purple;
+    background-color: yellow;
 }
 
 .divholder{
@@ -126,15 +134,16 @@ p {
 <div id="main-card">
 
   <button id="close-chatbot" onclick="maininvisible()">
-    &#10005;
+    <!--&#10005;-->
+    &lsaquo;
   </button>
 
   <div class="chat-area" id="message-box">
   </div>
   
-  <div class="input-div center">
+  <div class="input-div center" id='jokeblock'>
     <button id="joke-button" onclick="send()">
-      New Joke/Fun Fact
+      New Joke / Fun Fact
     </button>
   </div>
 
@@ -146,7 +155,7 @@ p {
 
 <script>
 
-const template = "Hey Griffles, tell me a joke/fact about RI!";
+const template = "Hey Griffles, tell me a joke / fact about RI!";
 
 const jokes = [
   // ['Hey Griffles, how many students are there in the school?','There are more than 2400 students in the school!'],
@@ -163,7 +172,7 @@ const jokes = [
   [template,"Wally is the name of Richardson-Morrison's wolf mascot."],
   ["What's the cheapest part of Griffles' house?","The roof tiles, because they're on the house!"],
   [template,"Griffles hates puns about the body because they are corny, but he hates puns about eyes even more because they are cornea"],
-  [template,'Hmm..." thought Griffles as he tried really hard to remember what year the War of 1812 was in history class.']
+  [template,'Hmm..." thought Griffles as he tried really hard to remember what year the War of 1812 was in history class.'],
   ["Waitress: May I take your order", "No, it's mine!"],
   [template, "Quick Griffles Facts: When Griffles was a kid, he used to put a ruler under his pillow to measure how long he slept."],
   [template,"Quick Griffles facts: If you stacked 100 Griffles on top of each other, they wouldn't like it."]
@@ -230,7 +239,7 @@ maininvisible = () => {
 }
 
 window.onload = () => {
-	addResponseMsg('Hello! I am Griffles! Press the button for a griffles joke/fact!')
+  addResponseMsg('Hello! I am Griffles! Press the button for a griffles joke / fact!')
   var div = document.createElement('div')
   let img = "<img src='data:image/png;base64," + grifflesb64 + "' width=40px />"
   div.innerHTML = img 
